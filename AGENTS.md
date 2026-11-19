@@ -1,0 +1,58 @@
+# Project context
+
+This repository contains Luca Colussi's personal portfolio website. It presents his biography, education, work experience, and projects, with dedicated project detail pages. Content is intended to be available in Italian and English.
+
+The visual reference is the Figma [Portfolio](https://www.figma.com/design/X458SXRvEHNAddldmOWgSz/Portfolio) file. Its visual direction uses a dark background, monospaced body text, sans-serif headings, thin dividers, and minimal composition. Adapt the desktop design for phones and tablets.
+
+The visual inspiration is *The Mentalist*, specifically the title and dictionary-style typography in the user-provided images stored in `docs/references/the-mentalist-phonetic.jpeg` and `docs/references/the-mentalist-definition.jpeg`. These images are design references. The Figma layout remains the implementation reference.
+
+The homepage hero presents Luca Colussi's name in IPA phonetic transcription, following the slash-delimited pronunciation treatment in the reference image. Preserve the Figma text `/ˈlu.ka koˈlus.si/`, including stress marks, syllable separators, and surrounding slashes. Keep the readable name "Luca Colussi" in navigation, metadata, and accessible text. Match the reference's typographic character and use fonts that support the phonetic glyphs correctly.
+
+## Stack and structure
+
+- Next.js App Router, React, strict TypeScript, and Tailwind CSS through PostCSS.
+- Use npm and commit `package-lock.json` updates when dependencies change.
+- `src/app/` contains routes, layouts, and global styles. The `@/*` alias resolves to `src/*`.
+- Store local static assets in `public/` when needed.
+- Prefer Server Components. Add `"use client"` only when interactions or browser APIs require it.
+- Follow the Node.js requirement in `package.json`; `.nvmrc` selects the development runtime.
+
+## Feature-first architecture
+
+- Organize domain code under `src/features/`. The portfolio areas are `introduction`, `education`, `experience`, and `projects`.
+- Keep `src/app/` focused on Next.js routing, layouts, metadata, and composing feature components.
+- Colocate each feature's components, content, types, and helpers within that feature. Start with a flat directory; add subdirectories only when real complexity warrants them.
+- Keep feature-specific components inside their owning feature. Move components to `src/components/layout/` or `src/components/ui/` only when they are shared across features or routes.
+- Use `src/lib/` only for genuinely shared, non-UI helpers. Features must not import from `src/app/` or depend on another feature's internal implementation; compose them at the route level.
+- Use kebab-case filenames, PascalCase React component names, and explicit imports through `@/`. Avoid unnecessary barrel files.
+- Create directories when implementation needs them; do not add empty features, placeholder files, or speculative hooks and services.
+
+## Conventions
+
+- Keep changes within the requested scope. Avoid unnecessary libraries and infrastructure.
+- Use semantic HTML, keyboard-accessible navigation, visible focus states, and appropriate image alternative text.
+- Implement fluid, responsive layouts rather than copying fixed dimensions and absolute positioning indiscriminately from generated Figma code.
+- Reuse existing components and design tokens. Extract components when reuse or readability warrants it.
+- Download Figma assets into the project; do not use temporary asset URLs at runtime.
+- Do not present demonstration content as real experience. Illustrative entries and social links in the design require user-provided content.
+- Keep secrets out of the repository. Use Git-ignored local `.env` files when needed.
+- Keep README.md visitor-facing: present the portfolio, its purpose, and visual inspiration without setup instructions, architecture details, or technical tooling.
+- Document development setup, commands, and prerequisites in CONTRIBUTING.md; maintain durable architecture and agent conventions here.
+
+## Commit messages
+
+- Follow Conventional Commits: `<type>: <description>`, with an optional scope when useful, such as `feat(projects): add project cards`.
+- Use `feat` for new functionality, `fix` for bug fixes, `refactor` for restructuring without behavior changes, `docs` for documentation, `style` for formatting-only changes, `perf` for performance improvements, `test` for tests, `build` for build tooling or dependencies, `ci` for CI configuration, and `chore` for other maintenance.
+- Write short descriptions in English, in the imperative and without a trailing period, such as `feat: add introduction section` or `fix: correct mobile navigation`.
+- Keep each commit focused on one coherent change. Choose the type based on its actual purpose; visual or behavioral changes are not formatting-only `style` commits.
+
+## Validation
+
+- After code changes, run `npm run typecheck` and `npm run build` when applicable.
+- ESLint is available through `npm run lint`. Run it when requested or when checking changes to its configuration.
+- For visual changes, check desktop and mobile behavior when browser verification is available.
+- Add tests for meaningful behavior. Avoid tests that merely mirror markup or simple configuration.
+
+## Maintaining this file
+
+Keep this file in English. Include only durable project context, conventions, and useful agent commands. Do not add session histories, progress logs, temporary tasks, or duplicate README content.
