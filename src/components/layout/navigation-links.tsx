@@ -4,9 +4,9 @@ import { BouncyText } from "@/components/ui/bouncy-text";
 
 export function NavigationLinks({ mobile = false, locale }: { mobile?: boolean; locale: Locale }) {
   const navigationItems = [
-    { label: locale === "it" ? "Chi sono" : "About", href: `/${locale}#about` },
-    { label: locale === "it" ? "Formazione" : "Education", href: `/${locale}#education` },
-    { label: locale === "it" ? "Lavoro" : "Work", href: `/${locale}#work` },
+    { label: locale === "it" ? "Chi sono" : "About", href: "/#about" },
+    { label: locale === "it" ? "Formazione" : "Education", href: "/#education" },
+    { label: locale === "it" ? "Lavoro" : "Work", href: "/#work" },
     { label: locale === "it" ? "Progetti" : "Projects", href: undefined },
   ];
   return (

@@ -1,14 +1,12 @@
-import { notFound } from "next/navigation";
-import { isLocale } from "@/lib/i18n";
+import { getLocale } from "@/lib/locale";
 import { IntroductionSection } from "@/features/introduction/introduction-section";
 import { AboutSection } from "@/features/introduction/about-section";
 import { EducationSection } from "@/features/education/education-section";
 import { ExperienceSection } from "@/features/experience/experience-section";
 import { SectionReveal, SectionRevealGroup } from "@/components/ui/section-reveal";
 
-export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
-  const { lang } = await params;
-  if (!isLocale(lang)) notFound();
+export default async function Home() {
+  const lang = await getLocale();
   return (
     <main>
       <IntroductionSection locale={lang} />

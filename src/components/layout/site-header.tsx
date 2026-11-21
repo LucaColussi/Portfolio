@@ -9,7 +9,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
     <header className="mx-auto max-w-[90rem] px-[var(--page-gutter)]">
       <div className="flex h-[var(--header-height)] items-center justify-between gap-2 sm:gap-4 border-b border-divider">
         <Link
-          href={`/${locale}`}
+          href="/"
           aria-label="Luca Colussi — Homepage"
           data-bounce-trigger
           className="flex min-h-11 w-fit shrink-0 items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"

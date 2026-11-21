@@ -39,7 +39,7 @@ The homepage hero presents Luca Colussi's name in IPA phonetic transcription, fo
 - Next.js App Router, React, strict TypeScript, and Tailwind CSS through PostCSS.
 - Use npm and commit `package-lock.json` updates when dependencies change.
 - For local development, install dependencies with `npm ci` and run `npm run dev`. Use `npm start` only after a successful production build.
-- `src/app/[lang]/` contains localized routes and the root layout for `/it` and `/en`; `/` redirects to `/en`. Keep the document language, metadata, navigation, dates, and feature content in sync with the route locale. Shared locale types and date formatting live in `src/lib/i18n.ts`; translations stay in their owning features. The `@/*` alias resolves to `src/*`.
+- `src/app/` contains routes, the root layout, and global styles. Serve both languages at the same URL; read the `portfolio-locale` cookie through `src/lib/locale.ts` (English by default). Update it through the footer’s server action, keeping the document language, metadata, navigation, dates, and content in sync. The preference lasts one year. Legacy `/it` and `/en` URLs redirect to `/`. Shared locale types and date formatting live in `src/lib/i18n.ts`; translations stay in their owning features. The `@/*` alias resolves to `src/*`.
 - Store local static assets in `public/` when needed.
 - Prefer Server Components. Add `"use client"` only when interactions or browser APIs require it.
 - Follow the Node.js requirement in `package.json`; `.nvmrc` selects the development runtime.
