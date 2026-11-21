@@ -49,7 +49,7 @@ export function MobileNavigation({ children }: { children: ReactNode }) {
         aria-controls={panelId}
         aria-label={isOpen ? "Chiudi navigazione" : "Apri navigazione"}
         onClick={() => setIsOpen((open) => !open)}
-        className="type-label min-h-11 min-w-14 cursor-pointer px-2 text-right focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
+        className="type-navigation flex min-h-11 min-w-14 cursor-pointer items-center justify-end px-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
       >
         {isOpen ? "Close" : "Menu"}
       </button>
@@ -57,6 +57,11 @@ export function MobileNavigation({ children }: { children: ReactNode }) {
         id={panelId}
         aria-label="Navigazione principale mobile"
         hidden={!isOpen}
+        onClick={(event) => {
+          if (event.target instanceof Element && event.target.closest("a[href]")) {
+            setIsOpen(false);
+          }
+        }}
         className="absolute top-[calc(100%+1rem)] right-0 z-10 w-48 border border-divider bg-background shadow-lg"
       >
         {children}

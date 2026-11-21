@@ -5,7 +5,10 @@
   --background: #101010;
   --foreground: #d9d9d9;
   --divider: #363636;
+  --secondary: #b9b9b9;
+  --muted: #a1a1a1;
   --header-height: 5rem;
+  --header-text-offset: 0.1em;
   --page-gutter: clamp(1rem, 6.6667vw, 6rem);
 }
 
@@ -19,6 +22,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-divider: var(--divider);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
   --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
   --font-mono: var(--font-courier-prime), "Courier New", Courier, monospace;
   --text-display: clamp(3.333333rem, 5.5556vw, 5rem);
@@ -33,6 +38,10 @@
   --text-body--line-height: 1.555556;
   --text-label: 0.875rem;
   --text-label--line-height: 1.428571;
+  --text-brand: 1.25rem;
+  --text-brand--line-height: 1.4;
+  --text-navigation: 1rem;
+  --text-navigation--line-height: 1.5;
   --tracking-heading: -0.03em;
 }
 
@@ -70,4 +79,16 @@ body {
 
 @utility type-label {
   @apply font-mono text-label font-normal tracking-normal;
+}
+
+@utility type-brand {
+  @apply font-mono text-brand font-bold tracking-normal;
+  position: relative;
+  top: var(--header-text-offset);
+}
+
+@utility type-navigation {
+  @apply font-mono text-navigation font-normal tracking-normal;
+  position: relative;
+  top: var(--header-text-offset);
 }

@@ -1,0 +1,19 @@
+@media (prefers-reduced-motion: no-preference) {
+  .name {
+    animation: fade-in 1s ease-out both;
+  }
+
+  .description {
+    animation: fade-in 1s ease-out 1s both;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

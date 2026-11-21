@@ -1,3 +1,5 @@
+import styles from "./introduction-section.module.css";
+
 export function IntroductionSection() {
   return (
     <section
@@ -6,7 +8,7 @@ export function IntroductionSection() {
     >
       <h1
         id="introduction-title"
-        className="type-display text-center"
+        className={`type-display text-center ${styles.name}`}
       >
         <span className="sr-only">Luca Colussi</span>
         <span aria-hidden="true">
@@ -18,7 +20,10 @@ export function IntroductionSection() {
           </span>
         </span>
       </h1>
-      <p lang="en" className="type-lead max-w-3xl text-center text-balance">
+      <p
+        lang="en"
+        className={`type-lead max-w-3xl text-center text-balance ${styles.description}`}
+      >
         An archive of work, projects
         <br /> and things I spend time on.
       </p>
