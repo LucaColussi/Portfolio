@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import type { Locale } from "@/lib/i18n";
 import { BouncyText } from "@/components/ui/bouncy-text";
 
-export function MobileNavigation({ children }: { children: ReactNode }) {
+export function MobileNavigation({ children, locale }: { children: ReactNode; locale: Locale }) {
   const [isOpen, setIsOpen] = useState(false);
   const panelId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -48,16 +49,16 @@ export function MobileNavigation({ children }: { children: ReactNode }) {
         type="button"
         aria-expanded={isOpen}
         aria-controls={panelId}
-        aria-label={isOpen ? "Chiudi navigazione" : "Apri navigazione"}
+        aria-label={locale === "it" ? (isOpen ? "Chiudi navigazione" : "Apri navigazione") : (isOpen ? "Close navigation" : "Open navigation")}
         data-bounce-trigger
         onClick={() => setIsOpen((open) => !open)}
         className="type-navigation flex min-h-11 min-w-14 cursor-pointer items-center justify-end px-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
       >
-        <BouncyText text={isOpen ? "Close" : "Menu"} />
+        <BouncyText text={isOpen ? (locale === "it" ? "Chiudi" : "Close") : "Menu"} />
       </button>
       <nav
         id={panelId}
-        aria-label="Navigazione principale mobile"
+        aria-label={locale === "it" ? "Navigazione principale mobile" : "Mobile main navigation"}
         hidden={!isOpen}
         onClick={(event) => {
           if (event.target instanceof Element && event.target.closest("a[href]")) {

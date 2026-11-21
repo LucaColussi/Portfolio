@@ -1,3 +1,4 @@
+import type { Locale } from "@/lib/i18n";
 // Source: https://github.com/LucaColussi/Resume/blob/main/main.pdf
 export const experienceEntries = [
   {
@@ -36,3 +37,19 @@ export const experienceEntries = [
     technologies: ["HTML", "CSS", "JavaScript", "JSON", "Python"],
   },
 ] as const;
+
+export function getExperienceEntries(locale: Locale) {
+  return experienceEntries.map((entry) => ({
+    ...entry,
+    role: locale === "it"
+      ? (entry.id === "sanmarco-informatica" ? "Software Engineer" : "Sviluppatore software")
+      : entry.role,
+    periods: entry.periods.map((period) => ({
+      ...period,
+      label: locale === "it" && period.label === "Intern" ? "Tirocinio" : period.label,
+    })),
+    description: locale === "en" ? entry.description : entry.id === "sanmarco-informatica"
+      ? "Ho realizzato una piattaforma interna utilizzata da oltre 700 dipendenti, con un’app mobile Flutter, un portale di amministrazione React e un backend Fastify. Ho integrato sistemi aziendali, autenticazione sicura e notifiche push mirate."
+      : "Ho sviluppato un prototipo web interno che raccoglieva circa 100 link e risorse specifiche dei clienti in un’unica pagina per 20 dipendenti, con sezioni interattive per accedere rapidamente alle informazioni.",
+  }));
+}

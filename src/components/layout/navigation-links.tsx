@@ -1,16 +1,16 @@
+import type { Locale } from "@/lib/i18n";
 import Link from "next/link";
 import { BouncyText } from "@/components/ui/bouncy-text";
 
-const navigationItems: { label: string; href?: string }[] = [
-  { label: "About", href: "/#about" },
-  { label: "Education", href: "/#education" },
-  { label: "Work", href: "/#work" },
-  { label: "Projects" },
-];
-
-export function NavigationLinks({ mobile = false }: { mobile?: boolean }) {
+export function NavigationLinks({ mobile = false, locale }: { mobile?: boolean; locale: Locale }) {
+  const navigationItems = [
+    { label: locale === "it" ? "Chi sono" : "About", href: `/${locale}#about` },
+    { label: locale === "it" ? "Formazione" : "Education", href: `/${locale}#education` },
+    { label: locale === "it" ? "Lavoro" : "Work", href: `/${locale}#work` },
+    { label: locale === "it" ? "Progetti" : "Projects", href: undefined },
+  ];
   return (
-    <ul className={mobile ? "flex flex-col gap-1 p-3" : "flex items-center gap-6 lg:gap-12"}>
+    <ul className={mobile ? "flex flex-col gap-1 p-3" : "flex items-center gap-4 lg:gap-8"}>
       {navigationItems.map(({ label, href }) => (
         <li key={label}>
           {href ? (

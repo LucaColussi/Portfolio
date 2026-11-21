@@ -1,17 +1,19 @@
+import { formatDate, type Locale } from "@/lib/i18n";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { educationEntries } from "@/features/education/education-content";
+import { getEducationEntries } from "@/features/education/education-content";
 
-export function EducationSection() {
+export function EducationSection({ locale }: { locale: Locale }) {
+  const educationEntries = getEducationEntries(locale);
   return (
     <section
       id="education"
-      lang="en"
+      lang={locale}
       aria-labelledby="education-title"
       tabIndex={-1}
       className="mx-auto max-w-[90rem] scroll-mt-8 px-[var(--page-gutter)]"
     >
       <div className="space-y-8 border-t border-divider pt-8 pb-16">
-        <SectionHeading index="02" title="EDUCATION" id="education-title" />
+        <SectionHeading index="02" title={locale === "it" ? "FORMAZIONE" : "EDUCATION"} id="education-title" />
         <ol className="space-y-3">
           {educationEntries.map((entry) => (
             <li
@@ -23,12 +25,12 @@ export function EducationSection() {
                 <p className="type-body text-muted">{entry.course}</p>
               </div>
               <p className="type-label shrink-0 text-muted sm:min-w-44 sm:text-right">
-                <time dateTime={entry.start.date}>{entry.start.label}</time>
+                <time dateTime={entry.start.date}>{formatDate(entry.start.date, locale)}</time>
                 {" — "}
                 {entry.end === null ? (
-                  "Present"
+                  locale === "it" ? "Presente" : "Present"
                 ) : (
-                  <time dateTime={entry.end.date}>{entry.end.label}</time>
+                  <time dateTime={entry.end.date}>{formatDate(entry.end.date, locale)}</time>
                 )}
               </p>
             </li>

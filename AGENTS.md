@@ -39,7 +39,7 @@ The homepage hero presents Luca Colussi's name in IPA phonetic transcription, fo
 - Next.js App Router, React, strict TypeScript, and Tailwind CSS through PostCSS.
 - Use npm and commit `package-lock.json` updates when dependencies change.
 - For local development, install dependencies with `npm ci` and run `npm run dev`. Use `npm start` only after a successful production build.
-- `src/app/` contains routes, layouts, and global styles. The `@/*` alias resolves to `src/*`.
+- `src/app/[lang]/` contains localized routes and the root layout for `/it` and `/en`; `/` redirects to `/en`. Keep the document language, metadata, navigation, dates, and feature content in sync with the route locale. Shared locale types and date formatting live in `src/lib/i18n.ts`; translations stay in their owning features. The `@/*` alias resolves to `src/*`.
 - Store local static assets in `public/` when needed.
 - Prefer Server Components. Add `"use client"` only when interactions or browser APIs require it.
 - Follow the Node.js requirement in `package.json`; `.nvmrc` selects the development runtime.
@@ -58,7 +58,7 @@ The homepage hero presents Luca Colussi's name in IPA phonetic transcription, fo
 
 - Keep changes within the requested scope. Avoid unnecessary libraries and infrastructure.
 - Use semantic HTML, keyboard-accessible navigation, visible focus states, and appropriate image alternative text.
-- All UI must be responsive. Validate navigation at narrow mobile widths and desktop breakpoints, with no horizontal overflow. Keep shared header dimensions in CSS tokens and account for them in the hero's viewport height.
+- All UI must be responsive. Validate navigation at narrow mobile widths and desktop breakpoints in both languages, with no horizontal overflow. Use the compact menu below 48rem and desktop navigation from 48rem. Keep the IT / EN language selector in the footer alongside contact links. Keep shared header dimensions in CSS tokens and account for them in the hero's viewport height.
 - On a full browser refresh, reset scroll to the top and remove stale section hashes before hydration so the hero entrance can replay. Preserve hash navigation on ordinary visits and section-link clicks, and restore the browser's prior scroll-restoration mode after the reload reset.
 - Compose content sections with `SectionReveal` inside a shared `SectionRevealGroup` at the route level. Reveal once with a 16px upward entrance and an 800ms fade, starting queued sections in document order 180ms apart. Observe stationary outer frames and animate their inner content so scroll geometry stays stable. Include sections passed during fast scrolling and reveal focused content immediately. Sections remain visible without JavaScript or with reduced motion; feature content stays server-rendered.
 - Implement fluid, responsive layouts rather than copying fixed dimensions and absolute positioning indiscriminately from generated Figma code.

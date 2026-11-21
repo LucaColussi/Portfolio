@@ -1,3 +1,4 @@
+import type { Locale } from "@/lib/i18n";
 // Source: education entries at https://www.linkedin.com/in/lucacolussi/
 export const educationEntries = [
   {
@@ -15,3 +16,14 @@ export const educationEntries = [
     end: { date: "2023-06", label: "Jun 2023" },
   },
 ] as const;
+
+export function getEducationEntries(locale: Locale) {
+  return educationEntries.map((entry) => ({
+    ...entry,
+    institution: locale === "it" && entry.id === "ca-foscari"
+      ? "Università Ca’ Foscari Venezia" : entry.institution,
+    course: locale === "it"
+      ? (entry.id === "ca-foscari" ? "Laurea in Informatica" : "Diploma in Informatica")
+      : entry.course,
+  }));
+}

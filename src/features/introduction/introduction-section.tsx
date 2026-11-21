@@ -1,6 +1,7 @@
+import type { Locale } from "@/lib/i18n";
 import styles from "./introduction-section.module.css";
 
-export function IntroductionSection() {
+export function IntroductionSection({ locale }: { locale: Locale }) {
   return (
     <section
       aria-labelledby="introduction-title"
@@ -21,11 +22,11 @@ export function IntroductionSection() {
         </span>
       </h1>
       <p
-        lang="en"
+        lang={locale}
         className={`type-lead max-w-3xl text-center text-balance ${styles.description}`}
       >
-        An archive of work, projects
-        <br /> and things I spend time on.
+        {locale === "it" ? "Lavori, progetti e cose" : "An archive of work, projects"}
+        <br /> {locale === "it" ? "a cui dedico il mio tempo." : "and things I spend time on."}
       </p>
     </section>
   );

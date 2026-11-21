@@ -1,17 +1,19 @@
+import { formatDate, type Locale } from "@/lib/i18n";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { experienceEntries } from "@/features/experience/experience-content";
+import { getExperienceEntries } from "@/features/experience/experience-content";
 
-export function ExperienceSection() {
+export function ExperienceSection({ locale }: { locale: Locale }) {
+  const experienceEntries = getExperienceEntries(locale);
   return (
     <section
       id="work"
-      lang="en"
+      lang={locale}
       aria-labelledby="work-title"
       tabIndex={-1}
       className="mx-auto max-w-[90rem] scroll-mt-8 px-[var(--page-gutter)]"
     >
       <div className="space-y-8 border-t border-divider pt-8 pb-16">
-        <SectionHeading index="03" title="WORK" id="work-title" />
+        <SectionHeading index="03" title={locale === "it" ? "LAVORO" : "WORK"} id="work-title" />
         <ol className="space-y-3">
           {experienceEntries.map((entry) => (
             <li
@@ -23,14 +25,14 @@ export function ExperienceSection() {
                   <div key={period.start.date}>
                     <p>
                       <time className="whitespace-nowrap" dateTime={period.start.date}>
-                        {period.start.label}
+                        {formatDate(period.start.date, locale)}
                       </time>
                       {" — "}
                       {period.end === null ? (
-                        "Present"
+                        locale === "it" ? "Presente" : "Present"
                       ) : (
                         <time className="whitespace-nowrap" dateTime={period.end.date}>
-                          {period.end.label}
+                          {formatDate(period.end.date, locale)}
                         </time>
                       )}
                     </p>
@@ -44,7 +46,7 @@ export function ExperienceSection() {
               </div>
               <div className="min-w-0 space-y-4">
                 <p className="type-body text-muted">{entry.description}</p>
-                <ul aria-label="Technologies" className="flex flex-wrap gap-2">
+                <ul aria-label={locale === "it" ? "Tecnologie" : "Technologies"} className="flex flex-wrap gap-2">
                   {entry.technologies.map((technology) => (
                     <li
                       key={technology}
