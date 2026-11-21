@@ -26,7 +26,7 @@ const inter = localFont({
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
   return {
-    title: "Luca Colussi — Portfolio",
+    title: "Luca Colussi - Portfolio",
     description: lang === "it"
       ? "Il portfolio personale di Luca Colussi: esperienze, formazione e progetti."
       : "Luca Colussi’s personal portfolio: experience, education, and projects.",
@@ -36,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const lang = await getLocale();
   return (
-    <html lang={lang} className={`${courierPrime.variable} ${inter.variable}`}>
+    <html lang={lang} data-scroll-behavior="smooth" className={`${courierPrime.variable} ${inter.variable}`}>
       <body className="antialiased">
         <Script src="/scripts/reset-scroll-on-reload.js" strategy="beforeInteractive" />
         <SiteHeader locale={lang} />
