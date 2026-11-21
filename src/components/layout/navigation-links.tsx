@@ -4,7 +4,7 @@ import { BouncyText } from "@/components/ui/bouncy-text";
 const navigationItems: { label: string; href?: string }[] = [
   { label: "About", href: "/#about" },
   { label: "Education", href: "/#education" },
-  { label: "Work" },
+  { label: "Work", href: "/#work" },
   { label: "Projects" },
 ];
 
