@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
 import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 import "./globals.css";
 
 const courierPrime = localFont({
@@ -35,6 +36,7 @@ export default function RootLayout({
         <Script src="/scripts/reset-scroll-on-reload.js" strategy="beforeInteractive" />
         <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );
