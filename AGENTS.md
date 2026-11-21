@@ -21,11 +21,15 @@ The homepage hero presents Luca Colussi's name in IPA phonetic transcription, fo
 | `type-card` | Inter / 700 | 24 / 32 px | Card titles and subheadings |
 | `type-lead` | Courier Prime / 700 | 24 / 32 px | Hero supporting text |
 | `type-body` | Courier Prime / 400 | 18 / 28 px | Body copy |
-| `type-label` | Courier Prime / 400 | 14 / 20 px | Navigation, dates, tags, and secondary metadata |
+| `type-label` | Courier Prime / 400 | 14 / 20 px | Dates, tags, and secondary metadata |
+| `type-brand` | Courier Prime / 700 | 20 / 28 px | Header name |
+| `type-navigation` | Courier Prime / 400 | 16 / 24 px | Header navigation and mobile menu |
 
 - Sizes are defined in rem; display and section sizes scale down for smaller viewports. Keep body text readable rather than scaling the entire design down.
 - Inter headings use -0.03em letter spacing, except role headings that use normal spacing in Figma; use `tracking-normal` for that exception. Courier Prime uses normal letter spacing.
-- For emphasized body text, navigation names, or social labels, use `type-body font-bold` or `type-label font-bold` as appropriate.
+- For emphasized body text or social labels, use `type-body font-bold` or `type-label font-bold` as appropriate. The header uses its dedicated brand and navigation utilities.
+- The header shows the name without a profile photo. Keep the name aligned left and desktop navigation aligned right, with both vertically centered in the header; use the compact menu on mobile.
+- Courier Prime's header text needs optical centering in addition to centered layout boxes. The brand and navigation utilities apply the shared `--header-text-offset` (0.1em downward) without changing layout height.
 - In the phonetic hero, render only the two IPA stress marks `ˈ` in Inter Bold; all other characters use Courier Prime Bold. Below the `sm` breakpoint (40rem), place the surname on a second line; keep each name segment intact. Provide the accessible heading name "Luca Colussi".
 - Keep hero supporting text proportional to the phonetic name: `--text-lead` is 30% of `--text-display`, scaling from 16px to 24px at the default root size. The name scales from approximately 53.33px to 80px. Use the lead size for the gap between the title and supporting text; preserve the supporting text's two-line composition.
 - Center the hero name horizontally and vertically within the available initial viewport using a fluid layout based on `min-height: 100svh`; account for navigation height when a header is present.
@@ -34,6 +38,7 @@ The homepage hero presents Luca Colussi's name in IPA phonetic transcription, fo
 
 - Next.js App Router, React, strict TypeScript, and Tailwind CSS through PostCSS.
 - Use npm and commit `package-lock.json` updates when dependencies change.
+- For local development, install dependencies with `npm ci` and run `npm run dev`. Use `npm start` only after a successful production build.
 - `src/app/` contains routes, layouts, and global styles. The `@/*` alias resolves to `src/*`.
 - Store local static assets in `public/` when needed.
 - Prefer Server Components. Add `"use client"` only when interactions or browser APIs require it.
@@ -54,13 +59,15 @@ The homepage hero presents Luca Colussi's name in IPA phonetic transcription, fo
 - Keep changes within the requested scope. Avoid unnecessary libraries and infrastructure.
 - Use semantic HTML, keyboard-accessible navigation, visible focus states, and appropriate image alternative text.
 - All UI must be responsive. Validate navigation at narrow mobile widths and desktop breakpoints, with no horizontal overflow. Keep shared header dimensions in CSS tokens and account for them in the hero's viewport height.
+- On a full browser refresh, reset scroll to the top and remove stale section hashes before hydration so the hero entrance can replay. Preserve hash navigation on ordinary visits and section-link clicks, and restore the browser's prior scroll-restoration mode after the reload reset.
+- Content sections such as About render visibly without scroll-triggered entrance animations.
 - Implement fluid, responsive layouts rather than copying fixed dimensions and absolute positioning indiscriminately from generated Figma code.
 - Reuse existing components and design tokens. Extract components when reuse or readability warrants it.
 - Download Figma assets into the project; do not use temporary asset URLs at runtime.
 - Do not present demonstration content as real experience. Illustrative entries and social links in the design require user-provided content.
 - Keep secrets out of the repository. Use Git-ignored local `.env` files when needed.
 - Keep README.md visitor-facing: present the portfolio, its purpose, and visual inspiration without setup instructions, architecture details, or technical tooling.
-- Document development setup, commands, and prerequisites in CONTRIBUTING.md; maintain durable architecture and agent conventions here.
+- Keep durable development commands, architecture, and agent conventions in this file.
 
 ## Commit messages
 
