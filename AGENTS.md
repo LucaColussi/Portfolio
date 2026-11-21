@@ -60,7 +60,7 @@ The homepage hero presents Luca Colussi's name in IPA phonetic transcription, fo
 - Use semantic HTML, keyboard-accessible navigation, visible focus states, and appropriate image alternative text.
 - All UI must be responsive. Validate navigation at narrow mobile widths and desktop breakpoints, with no horizontal overflow. Keep shared header dimensions in CSS tokens and account for them in the hero's viewport height.
 - On a full browser refresh, reset scroll to the top and remove stale section hashes before hydration so the hero entrance can replay. Preserve hash navigation on ordinary visits and section-link clicks, and restore the browser's prior scroll-restoration mode after the reload reset.
-- Content sections such as About render visibly without scroll-triggered entrance animations.
+- Compose content sections with `SectionReveal` inside a shared `SectionRevealGroup` at the route level. Reveal once with a 16px upward entrance and an 800ms fade, starting queued sections in document order 180ms apart. Observe stationary outer frames and animate their inner content so scroll geometry stays stable. Include sections passed during fast scrolling and reveal focused content immediately. Sections remain visible without JavaScript or with reduced motion; feature content stays server-rendered.
 - Implement fluid, responsive layouts rather than copying fixed dimensions and absolute positioning indiscriminately from generated Figma code.
 - Reuse existing components and design tokens. Extract components when reuse or readability warrants it.
 - Download Figma assets into the project; do not use temporary asset URLs at runtime.

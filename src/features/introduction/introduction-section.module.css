@@ -4,7 +4,7 @@
   }
 
   .description {
-    animation: fade-in 1s ease-out 1s both;
+    animation: fade-in 600ms ease-out 400ms both;
   }
 }
 

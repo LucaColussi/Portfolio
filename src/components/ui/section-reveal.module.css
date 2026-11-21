@@ -1,0 +1,30 @@
+/* A stationary frame keeps animation out of scroll geometry and observation. */
+.frame {
+  overflow: clip;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .content {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition:
+      opacity 800ms ease-out,
+      transform 800ms ease-out;
+  }
+
+  .frame:is([data-reveal-state="pending"], [data-reveal-state="queued"]) > .content {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+    transition: none;
+  }
+
+  .frame[data-reveal-state="queued"] > .content {
+    will-change: opacity, transform;
+  }
+
+  .frame:focus-within > .content {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: none;
+  }
+}
