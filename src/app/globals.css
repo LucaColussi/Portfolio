@@ -4,17 +4,70 @@
   color-scheme: dark;
   --background: #101010;
   --foreground: #d9d9d9;
+  --divider: #363636;
+  --header-height: 5rem;
+  --page-gutter: clamp(1rem, 6.6667vw, 6rem);
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --header-height: 6rem;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: Arial, Helvetica, sans-serif;
-  --font-mono: "Courier New", Courier, monospace;
+  --color-divider: var(--divider);
+  --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
+  --font-mono: var(--font-courier-prime), "Courier New", Courier, monospace;
+  --text-display: clamp(3.333333rem, 5.5556vw, 5rem);
+  --text-display--line-height: 1.2;
+  --text-lead: calc(var(--text-display) * 0.3);
+  --text-lead--line-height: 1.333333;
+  --text-section: clamp(1.75rem, 3vw, 2.25rem);
+  --text-section--line-height: 1.222222;
+  --text-card: 1.5rem;
+  --text-card--line-height: 1.333333;
+  --text-body: 1.125rem;
+  --text-body--line-height: 1.555556;
+  --text-label: 0.875rem;
+  --text-label--line-height: 1.428571;
+  --tracking-heading: -0.03em;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-mono);
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+}
+
+@utility type-display {
+  @apply font-mono text-display font-bold tracking-normal;
+}
+
+@utility type-project-title {
+  @apply font-sans text-display font-bold tracking-heading;
+}
+
+@utility type-section {
+  @apply font-sans text-section font-bold tracking-heading;
+}
+
+@utility type-card {
+  @apply font-sans text-card font-bold tracking-heading;
+}
+
+@utility type-lead {
+  @apply font-mono text-lead font-bold tracking-normal;
+}
+
+@utility type-body {
+  @apply font-mono text-body font-normal tracking-normal;
+}
+
+@utility type-label {
+  @apply font-mono text-label font-normal tracking-normal;
 }

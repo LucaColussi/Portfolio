@@ -1,15 +1,26 @@
 export function IntroductionSection() {
   return (
-    <section aria-labelledby="introduction-title" className="flex flex-col gap-6">
-      <p className="text-sm text-foreground/60">Portfolio</p>
+    <section
+      aria-labelledby="introduction-title"
+      className="flex min-h-[calc(100svh-var(--header-height))] flex-col items-center justify-center gap-[var(--text-lead)] px-4 py-12 sm:px-6"
+    >
       <h1
         id="introduction-title"
-        className="text-4xl font-bold tracking-tight sm:text-6xl"
+        className="type-display text-center"
       >
-        Luca Colussi
+        <span className="sr-only">Luca Colussi</span>
+        <span aria-hidden="true">
+          <span className="block whitespace-nowrap sm:inline">
+            /<span className="font-sans">ˈ</span>lu.ka
+          </span>{" "}
+          <span className="block whitespace-nowrap sm:inline">
+            ko<span className="font-sans">ˈ</span>lus.si/
+          </span>
+        </span>
       </h1>
-      <p className="max-w-xl text-base leading-7 text-foreground/75">
-        Uno spazio per esperienze, formazione e progetti. Sito in costruzione.
+      <p lang="en" className="type-lead max-w-3xl text-center text-balance">
+        An archive of work, projects
+        <br /> and things I spend time on.
       </p>
     </section>
   );
