@@ -48,7 +48,7 @@ export function ExperienceSection() {
                   {entry.technologies.map((technology) => (
                     <li
                       key={technology}
-                      className="type-label inline-flex items-center justify-center rounded-full border border-[#444] bg-[#202020] px-3 py-1 text-[#ccc]"
+                      className="type-label inline-flex items-center justify-center rounded-full border border-border-strong bg-surface-raised px-3 py-1 text-[#ccc]"
                     >
                       <span className="relative top-[0.2em]">{technology}</span>
                     </li>
