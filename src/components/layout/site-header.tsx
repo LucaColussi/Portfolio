@@ -6,8 +6,8 @@ import { NavigationLinks } from "@/components/layout/navigation-links";
 
 export function SiteHeader({ locale }: { locale: Locale }) {
   return (
-    <header className="mx-auto max-w-[90rem] px-[var(--page-gutter)]">
-      <div className="flex h-[var(--header-height)] items-center justify-between gap-2 sm:gap-4 border-b border-divider">
+    <header className="mx-auto max-w-360 px-(--page-gutter)">
+      <div className="flex h-(--header-height) items-center justify-between gap-2 sm:gap-4 border-b border-divider">
         <Link
           href="/"
           aria-label="Luca Colussi — Homepage"

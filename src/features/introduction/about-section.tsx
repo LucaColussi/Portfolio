@@ -12,7 +12,7 @@ export function AboutSection({ locale }: { locale: Locale }) {
       lang={locale}
       aria-labelledby="about-title"
       tabIndex={-1}
-      className="mx-auto max-w-[90rem] scroll-mt-8 px-[var(--page-gutter)]"
+      className="mx-auto max-w-360 scroll-mt-8 px-(--page-gutter)"
     >
       <div className="grid gap-8 border-t border-divider pt-8 pb-16 md:grid-cols-2 md:gap-6">
         <SectionHeading index="01" title={locale === "it" ? "CHI SONO" : "ABOUT"} id="about-title" />

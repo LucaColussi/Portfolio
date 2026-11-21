@@ -10,7 +10,7 @@ export function ExperienceSection({ locale }: { locale: Locale }) {
       lang={locale}
       aria-labelledby="work-title"
       tabIndex={-1}
-      className="mx-auto max-w-[90rem] scroll-mt-8 px-[var(--page-gutter)]"
+      className="mx-auto max-w-360 scroll-mt-8 px-(--page-gutter)"
     >
       <div className="space-y-8 border-t border-divider pt-8 pb-16">
         <SectionHeading index="03" title={locale === "it" ? "LAVORO" : "WORK"} id="work-title" />

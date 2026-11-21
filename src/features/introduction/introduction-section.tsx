@@ -5,7 +5,7 @@ export function IntroductionSection({ locale }: { locale: Locale }) {
   return (
     <section
       aria-labelledby="introduction-title"
-      className="flex min-h-[calc(100svh-var(--header-height))] flex-col items-center justify-center gap-[var(--text-lead)] px-4 py-12 sm:px-6"
+      className="flex min-h-[calc(100svh-var(--header-height))] flex-col items-center justify-center gap-(--text-lead) px-4 py-12 sm:px-6"
     >
       <h1
         id="introduction-title"
