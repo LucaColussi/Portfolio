@@ -8,13 +8,13 @@ export const experienceEntries = [
     periods: [
       {
         label: "Full-time",
-        start: { date: "2026-10", label: "Oct 2026" },
+        start: { date: "2026-10" },
         end: null,
       },
       {
         label: "Intern",
-        start: { date: "2026-03", label: "Mar 2026" },
-        end: { date: "2026-09", label: "Sep 2026" },
+        start: { date: "2026-03" },
+        end: { date: "2026-09" },
       },
     ],
     description:
@@ -28,8 +28,8 @@ export const experienceEntries = [
     periods: [
       {
         label: null,
-        start: { date: "2022-05", label: "May 2022" },
-        end: { date: "2022-06", label: "Jun 2022" },
+        start: { date: "2022-05" },
+        end: { date: "2022-06" },
       },
     ],
     description:
