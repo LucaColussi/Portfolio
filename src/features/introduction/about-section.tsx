@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { aboutContent } from "@/features/introduction/about-content";
 import styles from "./about-section.module.css";
 
@@ -14,14 +15,7 @@ export function AboutSection() {
       className="mx-auto max-w-[90rem] scroll-mt-8 px-[var(--page-gutter)]"
     >
       <div className="grid gap-8 border-t border-divider pt-8 pb-16 md:grid-cols-2 md:gap-6">
-        <div className="flex items-start gap-6">
-          <span aria-hidden="true" className="type-label w-10 shrink-0 pt-3 text-muted">
-            01 /
-          </span>
-          <h2 id="about-title" className="type-section">
-            ABOUT
-          </h2>
-        </div>
+        <SectionHeading index="01" title="ABOUT" id="about-title" />
         <div className="type-body space-y-5">
           <p className="font-bold">
             {aboutContent.introduction}{" "}

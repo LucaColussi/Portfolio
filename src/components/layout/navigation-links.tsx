@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const navigationItems: { label: string; href?: string }[] = [
   { label: "About", href: "/#about" },
-  { label: "Education" },
+  { label: "Education", href: "/#education" },
   { label: "Work" },
   { label: "Projects" },
 ];
