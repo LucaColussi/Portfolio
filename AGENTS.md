@@ -8,6 +8,28 @@ The visual inspiration is *The Mentalist*, specifically the title and dictionary
 
 The homepage hero presents Luca Colussi's name in IPA phonetic transcription, following the slash-delimited pronunciation treatment in the reference image. Preserve the Figma text `/ˈlu.ka koˈlus.si/`, including stress marks, syllable separators, and surrounding slashes. Keep the readable name "Luca Colussi" in navigation, metadata, and accessible text. Match the reference's typographic character and use fonts that support the phonetic glyphs correctly.
 
+## Typography hierarchy
+
+- The Figma typography uses Courier Prime Regular (400), Courier Prime Bold (700), and Inter Bold (700). Load the bundled font files through `next/font/local` in the root layout; retain their OFL licenses in `src/app/fonts/`.
+- Use the shared typography utilities and Tailwind theme tokens in `src/app/globals.css`. Do not introduce competing font families or one-off typography scales in features.
+
+| Utility | Family / weight | Desktop size / line height | Purpose |
+| --- | --- | --- | --- |
+| `type-display` | Courier Prime / 700 | 80 / 96 px | Hero phonetic name |
+| `type-project-title` | Inter / 700 | 80 / 96 px | Main project page title |
+| `type-section` | Inter / 700 | 36 / 44 px | Section headings |
+| `type-card` | Inter / 700 | 24 / 32 px | Card titles and subheadings |
+| `type-lead` | Courier Prime / 700 | 24 / 32 px | Hero supporting text |
+| `type-body` | Courier Prime / 400 | 18 / 28 px | Body copy |
+| `type-label` | Courier Prime / 400 | 14 / 20 px | Navigation, dates, tags, and secondary metadata |
+
+- Sizes are defined in rem; display and section sizes scale down for smaller viewports. Keep body text readable rather than scaling the entire design down.
+- Inter headings use -0.03em letter spacing, except role headings that use normal spacing in Figma; use `tracking-normal` for that exception. Courier Prime uses normal letter spacing.
+- For emphasized body text, navigation names, or social labels, use `type-body font-bold` or `type-label font-bold` as appropriate.
+- In the phonetic hero, render only the two IPA stress marks `ˈ` in Inter Bold; all other characters use Courier Prime Bold. Below the `sm` breakpoint (40rem), place the surname on a second line; keep each name segment intact. Provide the accessible heading name "Luca Colussi".
+- Keep hero supporting text proportional to the phonetic name: `--text-lead` is 30% of `--text-display`, scaling from 16px to 24px at the default root size. The name scales from approximately 53.33px to 80px. Use the lead size for the gap between the title and supporting text; preserve the supporting text's two-line composition.
+- Center the hero name horizontally and vertically within the available initial viewport using a fluid layout based on `min-height: 100svh`; account for navigation height when a header is present.
+
 ## Stack and structure
 
 - Next.js App Router, React, strict TypeScript, and Tailwind CSS through PostCSS.
@@ -31,6 +53,7 @@ The homepage hero presents Luca Colussi's name in IPA phonetic transcription, fo
 
 - Keep changes within the requested scope. Avoid unnecessary libraries and infrastructure.
 - Use semantic HTML, keyboard-accessible navigation, visible focus states, and appropriate image alternative text.
+- All UI must be responsive. Validate navigation at narrow mobile widths and desktop breakpoints, with no horizontal overflow. Keep shared header dimensions in CSS tokens and account for them in the hero's viewport height.
 - Implement fluid, responsive layouts rather than copying fixed dimensions and absolute positioning indiscriminately from generated Figma code.
 - Reuse existing components and design tokens. Extract components when reuse or readability warrants it.
 - Download Figma assets into the project; do not use temporary asset URLs at runtime.

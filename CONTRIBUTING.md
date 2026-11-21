@@ -35,6 +35,9 @@ Da VS Code è possibile avviare lo script `dev` anche dal pannello **NPM Scripts
 ```text
 src/
   app/                  # Route, layout, metadati e stili globali
+    fonts/              # Font locali e relative licenze
+  components/
+    layout/             # Header e navigazione condivisi
   features/
     introduction/       # Presentazione personale
 ```
@@ -44,6 +47,14 @@ Le altre aree previste sono `education`, `experience` e `projects`: le rispettiv
 I componenti effettivamente condivisi vanno in `src/components/layout/` o `src/components/ui/`; gli helper comuni in `src/lib/`. Non creare cartelle vuote o astrazioni anticipate. L'alias `@/*` punta a `src/*`.
 
 Le immagini di riferimento sono in `docs/references/`; le risorse usate dal sito vanno in `public/`. Per il setup di base non servono servizi esterni o variabili d'ambiente.
+
+## Tipografia e responsive
+
+Courier Prime e Inter sono inclusi in `src/app/fonts/`, insieme alle licenze OFL, e caricati tramite `next/font/local`. I file provengono dal repository ufficiale [Google Fonts](https://github.com/google/fonts/tree/main/ofl): [Courier Prime](https://github.com/google/fonts/tree/main/ofl/courierprime) e [Inter](https://github.com/google/fonts/tree/main/ofl/inter).
+
+Usare i token e le utility tipografiche di `src/app/globals.css`; la gerarchia completa è descritta in AGENTS.md. Il sottotitolo della copertina mantiene una dimensione pari al 30% del nome fonetico. Sotto i 640 px, il cognome passa sulla seconda riga; sotto i 768 px, l'header mostra il menu mobile.
+
+Per le modifiche visive, controllare anche le larghezze mobili strette e i cambi di breakpoint, l'assenza di scorrimento orizzontale e l'uso della navigazione da tastiera.
 
 ## Verifiche
 
