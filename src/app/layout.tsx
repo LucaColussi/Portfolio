@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { SiteHeader } from "@/components/layout/site-header";
 import "./globals.css";
 
@@ -31,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="it" className={`${courierPrime.variable} ${inter.variable}`}>
       <body className="antialiased">
+        <Script src="/scripts/reset-scroll-on-reload.js" strategy="beforeInteractive" />
         <SiteHeader />
         {children}
       </body>
