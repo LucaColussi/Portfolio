@@ -1,7 +1,7 @@
 # Luca Colussi - Portfolio
 
-Il mio percorso in informatica, tra formazione, lavoro e progetti. Disponibile in italiano e inglese.
+My journey in computer science through education, work, and personal projects. Available in Italian and English.
 
-Identità visiva ispirata a *The Mentalist*.
+Visual identity inspired by *The Mentalist*.
 
 [lucacolussi.dev](https://lucacolussi.dev)
