@@ -1,0 +1,45 @@
+.word {
+  white-space: nowrap;
+}
+
+.letter {
+  display: inline-block;
+  transform-origin: center bottom;
+  animation-duration: 600ms;
+  animation-timing-function: ease-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :global([data-bounce-trigger]:focus-visible) .letter {
+    animation-name: letter-bounce;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  :global([data-bounce-trigger]:hover) .letter {
+    animation-name: letter-bounce;
+  }
+}
+
+@keyframes letter-bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    color: inherit;
+    text-shadow: none;
+  }
+
+  30% {
+    transform: translateY(-0.22em) scale(1.06, 0.94);
+    color: #fff;
+    text-shadow: 0 0 0.35em rgb(255 255 255 / 35%);
+  }
+
+  50% {
+    transform: translateY(0.06em) scale(0.97, 1.04);
+  }
+
+  70% {
+    transform: translateY(-0.08em) scale(1.02, 0.98);
+  }
+}

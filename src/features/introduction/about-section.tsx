@@ -1,11 +1,9 @@
-import { Fragment } from "react";
+import { BouncyText } from "@/components/ui/bouncy-text";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { aboutContent } from "@/features/introduction/about-content";
 import styles from "./about-section.module.css";
 
 export function AboutSection() {
-  const employerWords = Array.from(aboutContent.employer.name.matchAll(/\S+/g));
-
   return (
     <section
       id="about"
@@ -24,26 +22,10 @@ export function AboutSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={aboutContent.employer.name}
+              data-bounce-trigger
               className={styles.employerLink}
             >
-              <span aria-hidden="true">
-                {employerWords.map((word, wordIndex) => (
-                  <Fragment key={word.index}>
-                    {wordIndex > 0 ? " " : null}
-                    <span className={styles.word}>
-                      {Array.from(word[0]).map((letter, letterIndex) => (
-                        <span
-                          key={letterIndex}
-                          className={styles.letter}
-                          style={{ animationDelay: `${(word.index + letterIndex) * 18}ms` }}
-                        >
-                          {letter}
-                        </span>
-                      ))}
-                    </span>
-                  </Fragment>
-                ))}
-              </span>
+              <BouncyText text={aboutContent.employer.name} />
             </a>
             .
           </p>

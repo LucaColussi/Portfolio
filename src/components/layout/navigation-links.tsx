@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BouncyText } from "@/components/ui/bouncy-text";
 
 const navigationItems: { label: string; href?: string }[] = [
   { label: "About", href: "/#about" },
@@ -15,9 +16,11 @@ export function NavigationLinks({ mobile = false }: { mobile?: boolean }) {
           {href ? (
             <Link
               href={href}
-              className={`type-navigation flex min-h-11 items-center underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground ${mobile ? "px-3" : ""}`}
+              aria-label={label}
+              data-bounce-trigger
+              className={`type-navigation flex min-h-11 items-center no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground ${mobile ? "px-3" : ""}`}
             >
-              {label}
+              <BouncyText text={label} />
             </Link>
           ) : (
             <span

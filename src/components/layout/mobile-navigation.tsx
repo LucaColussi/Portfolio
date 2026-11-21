@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { BouncyText } from "@/components/ui/bouncy-text";
 
 export function MobileNavigation({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,10 +49,11 @@ export function MobileNavigation({ children }: { children: ReactNode }) {
         aria-expanded={isOpen}
         aria-controls={panelId}
         aria-label={isOpen ? "Chiudi navigazione" : "Apri navigazione"}
+        data-bounce-trigger
         onClick={() => setIsOpen((open) => !open)}
         className="type-navigation flex min-h-11 min-w-14 cursor-pointer items-center justify-end px-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
       >
-        {isOpen ? "Close" : "Menu"}
+        <BouncyText text={isOpen ? "Close" : "Menu"} />
       </button>
       <nav
         id={panelId}

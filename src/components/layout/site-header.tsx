@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BouncyText } from "@/components/ui/bouncy-text";
 import { MobileNavigation } from "@/components/layout/mobile-navigation";
 import { NavigationLinks } from "@/components/layout/navigation-links";
 
@@ -9,9 +10,12 @@ export function SiteHeader() {
         <Link
           href="/"
           aria-label="Luca Colussi — Homepage"
+          data-bounce-trigger
           className="flex min-h-11 w-fit shrink-0 items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
         >
-          <span className="type-brand">Luca Colussi</span>
+          <span className="type-brand">
+            <BouncyText text="Luca Colussi" />
+          </span>
         </Link>
         <nav aria-label="Navigazione principale" className="hidden md:block">
           <NavigationLinks />

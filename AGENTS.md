@@ -63,6 +63,7 @@ The homepage hero presents Luca Colussi's name in IPA phonetic transcription, fo
 - Compose content sections with `SectionReveal` inside a shared `SectionRevealGroup` at the route level. Reveal once with a 16px upward entrance and an 800ms fade, starting queued sections in document order 180ms apart. Observe stationary outer frames and animate their inner content so scroll geometry stays stable. Include sections passed during fast scrolling and reveal focused content immediately. Sections remain visible without JavaScript or with reduced motion; feature content stays server-rendered.
 - Implement fluid, responsive layouts rather than copying fixed dimensions and absolute positioning indiscriminately from generated Figma code.
 - Reuse existing components and design tokens. Extract components when reuse or readability warrants it.
+- Use shared `BouncyText` inside links and buttons marked with `data-bounce-trigger` for the letter-bounce interaction. Supply an accessible name on the containing control. Header controls use this effect instead of hover underlines; retain visible keyboard focus and respect reduced motion.
 - Download Figma assets into the project; do not use temporary asset URLs at runtime.
 - Do not present demonstration content as real experience. Illustrative entries and social links in the design require user-provided content.
 - Keep secrets out of the repository. Use Git-ignored local `.env` files when needed.
